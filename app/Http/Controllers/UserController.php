@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Rules\uppercase;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\view;
 
@@ -66,13 +68,20 @@ function logout($p){
     function addu(Request $request){
         echo'this is from addu function <br>';
         $request->validate([
+            //this is basically validation rule.
             'username'=> 'required | min:3 | max:15',
             'email'=> 'required | email',
-            'city'=> 'required',
+            'city'=> 'required | uppercase ' ,
             'skill'=> 'required | min:1',
+        ],[
+            //inside you can write your own validate rule error massage .
+            'username'=> 'username con not be empty',
+            'email.email'=> 'this email is not valid and fill the email again',
+            'username.min'=>'username min characters should be 3',
+            'username.max'=>'username max characters limit is 15'
         ]);
-
-        return $request->username;
+            //checking all input valu like username, city,email.
+        return [$request->username, $request->city, $request->email];
        
 
     }

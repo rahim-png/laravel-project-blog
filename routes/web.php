@@ -32,7 +32,12 @@ Route::get('logout/{name}',[UserController::class,'logout']);
 Route::get('contact',[UserController::class,'contactF']);
 Route::get('ckc',[UserController::class,'ck']);
 
-Route::get('/sin',action: [UserController::class,'sinni']);
-Route::get('/add',[UserController::class,'login']);
 
-Route::post('/add',[UserController::class,'addu']);
+//useingroute controller grouping
+Route::controller(UserController::class)->group(function(){
+Route::get('/sin','sinni');
+
+Route::get('/add','login');
+
+Route::post('/add','addu');
+});

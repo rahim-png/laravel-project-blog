@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Rules\uppercase;
+use App\Rules\fisup;
 use Illuminate\Http\Request;
+use App\Rules\firstletterUp;
 use Illuminate\Support\Facades\view;
 
 
@@ -63,22 +65,24 @@ function logout($p){
         
     } 
 
-    //function for adding user
+    //function for adding user request
 
     function addu(Request $request){
         echo'this is from addu function <br>';
+       
         $request->validate([
             //this is basically validation rule.
-            'username'=> 'required | min:3 | max:15',
-            'email'=> 'required | email',
-            'city'=> 'required | uppercase ' ,
-            'skill'=> 'required | min:1',
+            'username'=> 'required|min:3|max:15|uppercase',
+            'email'=> 'required|email',
+            'city'=> ['required', new Fisup],
+            'skill'=> 'required|min:1',
         ],[
             //inside you can write your own validate rule error massage .
-            'username'=> 'username con not be empty',
-            'email.email'=> 'this email is not valid and fill the email again',
+            'username.required'=> 'username con not be empty',
+            'email.email'=> 'are you made? this email is not valid and fill the email again',
             'username.min'=>'username min characters should be 3',
-            'username.max'=>'username max characters limit is 15'
+            'username.max'=>'username max characters limit is 15',
+            
         ]);
             //checking all input valu like username, city,email.
         return [$request->username, $request->city, $request->email];

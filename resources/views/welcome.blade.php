@@ -10,8 +10,7 @@
 
   <x-massage-banar sty="warning"  msg="warning !! you need to login first"/>
 
-
-
+    
     <p>this paragraph is for the test propase in git hub</p>
     <p>hello rahim <br>i am from welcome page</p>
     <style>

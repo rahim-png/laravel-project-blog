@@ -15,7 +15,15 @@ class AgeCheck
      */
     public function handle(Request $request, Closure $next): Response
     {
-        echo "hi from agecheck";
+        //globale middleware rule applied
+        echo "hi from agecheck ";
+        //echo"<pre>";
+        //print_r($request->all());
+        if ($request->city != "LONDON"||$request->username != "RAHIM") {
+            echo "you cannot visit this site";
+        }else{
+            echo" $request->username you can visit ";
+        }
         return $next($request);
     }
 }

@@ -1,7 +1,10 @@
 <?php
 
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\DbController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\AgeCheck;
+use App\Http\Middleware\cuntryChack;
 
 Route::get('/', function () {
     return view('welcome');
@@ -17,8 +20,8 @@ Route::get('home',[UserController::class,'home'] );
 //about page route
 
 Route::get('/about', function(){
-    return view ('about');
-}); 
+    return view('about');
+})->middleware(CuntryChack::class);
 //call userController
 
 Route::get('user',[UserController::class,'getUser']);
@@ -35,9 +38,14 @@ Route::get('ckc',[UserController::class,'ck']);
 
 //useingroute controller grouping
 Route::controller(UserController::class)->group(function(){
-Route::get('/sin','sinni');
+    
+Route::get('/sin','sinni')->middleware(cuntryChack::class);
 
 Route::get('/add','login');
 
-Route::post('/add','addu');
+Route::post('/add', 'addu')->middleware(middleware: AgeCheck::class);
 });
+
+//database route
+Route::get('/data', [DbController::class, 'index']);
+

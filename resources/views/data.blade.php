@@ -26,4 +26,30 @@
     @endforeach
  </table>
 
+ <h3>students table</h3>
+ <table border="1">
+    <tr>
+        <td>id</td>
+        <td>Name</td>
+        <td>email</td>
+        <td>phone</td>
+        <td>batch</td>
+        
+    </tr>
+    @foreach ($students as $student)
+    <tr>
+        <td>{{ $student->id }}</td>
+        <td>{{ $student->name }}</td>
+        <td>{{ $student->email }}</td>
+        <td>{{ $student->phone }}</td>
+        <td>{{ $student->batch }}</td>
+    </tr>
+    @endforeach
+ </table>
+
+ <div>
+    <pre>
+        {{ print_r([$students ,$users]) }}
+ </div>
+
 </div>

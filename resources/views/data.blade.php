@@ -47,9 +47,15 @@
     @endforeach
  </table>
 
+ <!-- print array 
  <div>
     <pre>
         {{ print_r([$students ,$users]) }}
  </div>
+                    -->
+<div>
+    <h2>calling fun() function from the model </h2>
+    {{ $dEch1 }}
+</div>
 
 </div>

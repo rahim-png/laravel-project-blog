@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\JasonController;
 use App\Http\Controllers\DbController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\AgeCheck;
@@ -49,3 +50,5 @@ Route::post('/add', 'addu')->middleware(middleware: AgeCheck::class);
 //database route
 Route::get('/data', [DbController::class, 'index']);
 
+//jason route
+Route::get('/jason', [App\Http\Controllers\JasonController::class, 'index']);

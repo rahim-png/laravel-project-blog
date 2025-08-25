@@ -12,7 +12,10 @@ class DbController extends Controller
         //return DB::select('SELECT * FROM users'); same as below
          $users=DB::table('users')->get();
          $students=\App\Models\student::all();
+        //model function call
+         $dataEch=new \App\Models\student;
+         $dataEch1= $dataEch->fun();
 
-         return view('data',['users'=>$users ,'students'=>$students]);
+         return view('data',['users'=>$users ,'students'=>$students ,'dEch1'=>$dataEch1]);
     }
 }

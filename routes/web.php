@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\JasonController;
+use App\Http\Controllers\NewUserController;
 use App\Http\Controllers\DbController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\AgeCheck;
@@ -52,3 +53,11 @@ Route::get('/data', [DbController::class, 'index']);
 
 //jason route
 Route::get('/jason', [App\Http\Controllers\JasonController::class, 'index']);
+
+//newusercontroller for login and logout
+
+Route::view('/Login', 'login');
+Route::view('/profile', 'profile');
+
+Route::post('/Login', [App\Http\Controllers\NewUserController::class, 'login']);
+Route::get('/Logout', [App\Http\Controllers\NewUserController::class, 'logout']);

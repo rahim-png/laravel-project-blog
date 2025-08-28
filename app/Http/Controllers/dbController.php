@@ -21,9 +21,11 @@ class DbController extends Controller
 
          //inserting data into database ussing model query builder
          $stu=new student;
+
         // below line basicly generate random name like jon23 jon456 etc
         //  $stu->name = 'Herbi' . strval(rand(1, 1000));
         //  $stu->phone='456565'.random_int(1,100);
+        
         //  $stu->batch='b4';
         //  $stu->save();
         //  if($stu->save()){

@@ -16,9 +16,9 @@ class cuntryChack
      */
     public function handle(Request $request, Closure $next): Response
     {   
-        echo" from cuntrychack ";
+        echo" from cuntrychack middleware ";
         echo "<pre>";
-        Print_r ($request);
+        //Print_r ($request);
 
         return $next($request);
     }
